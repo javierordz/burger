@@ -1,24 +1,29 @@
 <h1>Burgers</h1>
 
+<h2>TO EAT</h2>
 {{#each burgers}}
 
-{{#if this.devoured}}
-<h2>TO EAT</h2>
-<li>
-  {{this.id}} || {{this.burger_name}}
-</li>
-{{/if}}
-
-{{#unless this.devoured}}
-<h2>EATEN</h2>
-<li>
-  {{this.id}} || {{this.burger_name}}
-</li>
-{{/unless}}
+  {{#if this.devoured}}
+    <li>
+      {{this.id}} || {{this.burger_name}}
+    </li>
+  {{/if}}
 
 {{/each}}
 
-<h2>CREATE A BURGER</h2>
+<h2>EATEN</h2>
+{{#each burgers}}
+
+  {{#if this.devoured}}
+
+    <li>
+      {{this.id}} || {{this.burger_name}}
+    </li>
+  {{/if}}
+
+{{/each}}
+
+{{!-- <h2>CREATE A BURGER</h2>
 <form id="addburger" class="button-size">
   <textarea typce="text" name="plan"></textarea>
   <button type="submit">Update Plan!</button>
@@ -42,4 +47,4 @@
       }
     );
   })
-</script>
+</script> --}}
