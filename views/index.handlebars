@@ -1,4 +1,5 @@
 <div class="container">
+
   <div class="jumbotron">
     <h1 class="display-4">Eat-Da-Burger!</h1>
   </div>
@@ -9,8 +10,9 @@
         {{#each burgers}}
           {{#unless this.devoured}}
             <li>
-              {{this.id}} || {{this.burger_name}}
+              {{this.id}} || {{this.burger_name}} > > >
               <button class="devour-burger" data-burger-id="{{this.id}}" data-devour="{{this.devoured}}">Devour!</button>
+              <button class="delete-burger" data-burger-id="{{this.id}}">X</button>
             </li>
           {{/unless}}
         {{/each}}
@@ -22,6 +24,7 @@
         {{#if this.devoured}}
           <li>
             {{this.id}} || {{this.burger_name}}
+            <button class="devour-burger" data-burger-id="{{this.id}}" data-devour="{{this.devoured}}">Reorder!</button>
           </li>
         {{/if}}
       {{/each}}

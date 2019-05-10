@@ -1,34 +1,51 @@
-$("#add-burger").on("submit", function(event) {
-    event.preventDefault();
+$(function() {
 
-    var newBurger = {
-      burger_name: $("#new-burger").val().trim(),
-      devoured: 0
-    }
+    $("#add-burger").on("submit", function(event) {
+        event.preventDefault();
 
-    $.ajax("/api/burgers", {
-      type: "POST",
-      data: newBurger
-    }).then(
-      function() {
-        console.log("created new burger");
-        location.reload();
-      }
-    );
-});
+        var newBurger = {
+        burger_name: $("#new-burger").val().trim(),
+        devoured: 0
+        }
 
-$(".devour-burger").on("click", function (event) {
-    var id = $(this).data("burger-id");
-    var eaten = $(this).data("devour");
-    var eatenState = {devoured: !eaten};
-    
-    $.ajax("/api/burgers/" + id, {
-        type: "PUT",
-        data: eatenState
-    }).then(
-        function () {
-            console.log("devoured burger");
+        $.ajax("/api/burgers", {
+        type: "POST",
+        data: newBurger
+        }).then(
+        function() {
+            console.log("created new burger");
             location.reload();
         }
-    );
+        );
+    });
+
+    $(".devour-burger").on("click", function (event) {
+        var id = $(this).data("burger-id");
+        var eaten = $(this).data("devour");
+        var eatenState = {devoured: !eaten};
+        
+        $.ajax("/api/burgers/" + id, {
+            type: "PUT",
+            data: eatenState
+        }).then(
+            function () {
+                console.log("devoured burger");
+                location.reload();
+            }
+        );
+    });
+
+    $(".delete-burger").on("click", function (event) {
+        var id = $(this).data("burger-id");
+        
+        $.ajax("/api/burgers/" + id, {
+            type: "DELETE"
+        }).then(
+            function () {
+                console.log("deleted burger");
+                location.reload();
+            }
+        );
+    });
+
 });
