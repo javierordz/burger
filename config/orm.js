@@ -41,7 +41,7 @@ var orm = {
 
     create: function(table, cols, vals, cb) {
         var queryString = "INSERT INTO " + table;
-        queryString += " (" + cols.toString + ") ";
+        queryString += " (" + cols.toString() + ") ";
         queryString += " VALUES (" + printQmarks(vals.length) + ") ";
         console.log(queryString);
 

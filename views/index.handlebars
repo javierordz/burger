@@ -7,23 +7,23 @@
     <div class="col-lg">
       <h2>TO EAT</h2>
         {{#each burgers}}
-          {{#if this.devoured}}
+          {{#unless this.devoured}}
             <li>
               {{this.id}} || {{this.burger_name}}
               <button data-burger-id="{{this.id}}" class="devour-burger">Devour!</button>
             </li>
-          {{/if}}
+          {{/unless}}
         {{/each}}
     </div>
 
   <div class="col">
     <h2>EATEN</h2>
       {{#each burgers}}
-        {{#unless this.devoured}}
+        {{#if this.devoured}}
           <li>
             {{this.id}} || {{this.burger_name}}
           </li>
-        {{/unless}}
+        {{/if}}
       {{/each}}
     </div>
   </div>
@@ -33,34 +33,10 @@
     <h2>CREATE A BURGER</h2>
     <br>
     
-    <form id="addburger" class="button-size">
-      <textarea typce="text" name="plan"></textarea>
-      <button type="submit">Update Plan!</button>
+    <form id="add-burger" class="button-size">
+      <textarea typce="text" id="new-burger"></textarea>
+      <button type="submit">Submit Burger!</button>
     </form>
   </div>
-
-<script>
-  $("#addburger").on("submit", function(event) {
-    event.preventDefault();
-
-    var newBurger = {
-      burger_name: $("#addburger [name=plan]").val().trim();
-      devoured: false;
-    }
-
-    $.ajax("/burgers", {
-      type: "POST",
-      data: newBurger
-    }).then(
-      function() {
-        console.log("created new burger");
-        location.reload();
-      }
-    );
-  })
-</script>
-
-
-
 
 </div>

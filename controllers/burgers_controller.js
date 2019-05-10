@@ -7,7 +7,7 @@ var burger = require("../models/burger")
 // ROUTES
 router.get("/", function(req, res) {
     burger.all(function(data) {
-        var hbsObject = {cats: data}
+        var hbsObject = {burgers: data}
         console.log(hbsObject);
         res.render("index", { burgers: data });
     })
@@ -15,8 +15,8 @@ router.get("/", function(req, res) {
 
 router.post("/api/burgers", function(req, res) {
     burger.create(
-        ["name", "sleepy"],
-        [req.body.name, req.body.sleepy],
+        ["burger_name", "devoured"],
+        [req.body.burger_name, req.body.devoured],
         function(result) {
             res.json({ id: result.insertId });
             console.log({ id: result.insertId });
@@ -26,9 +26,9 @@ router.post("/api/burgers", function(req, res) {
 
 router.put("api/burgers/:id", function(req, res) {
     var condition = "id = " + req.params.id;
-    console.log("condition", condition);
+    console.log("condition:", condition);
 
-    burger.update({sleepy: req.body.sleepy}, condition, function(result) {
+    burger.update({devoured: req.body.devoured}, condition, function(result) {
         if(result.changedRows == 0) {
             return res.status(404).end();
         } else {
