@@ -3,10 +3,7 @@ var connection = require("./connection");
 // Creates array of question marks for query
 function printQmarks(num) {
     var arr = [];
-
-    for (var i = 0; i < num; i++) {
-        arr.push("?");
-    }
+    for (var i = 0; i < num; i++) { arr.push("?"); }
 
     return arr.toString();
 }
@@ -14,7 +11,6 @@ function printQmarks(num) {
 // Converts key/value pairs into SQL syntax
 function convertSyntax(ob) {
     var arr = [];
-
     for (var key in ob) {
       var value = ob[key];
       if (Object.hasOwnProperty.call(ob, key)) {
@@ -25,12 +21,12 @@ function convertSyntax(ob) {
         arr.push(key + "=" + value);
       }
     }
-  
+
     return arr.toString();
 }
 
 var orm = {
-    all: function(tableInput, cb) {
+    selectAll: function(tableInput, cb) {
         var queryString = "SELECT * FROM " + tableInput + ";";
 
         connection.query(queryString, function(err, result) {
@@ -39,7 +35,7 @@ var orm = {
         });
     },
 
-    create: function(table, cols, vals, cb) {
+    insertOne: function(table, cols, vals, cb) {
         var queryString = "INSERT INTO " + table;
         queryString += " (" + cols.toString() + ") ";
         queryString += " VALUES (" + printQmarks(vals.length) + ") ";
@@ -51,7 +47,7 @@ var orm = {
         });
     },
 
-    update: function(table, objColVals, condition, cb) {
+    updateOne: function(table, objColVals, condition, cb) {
         var queryString = "UPDATE " + table;
         queryString += " SET " + convertSyntax(objColVals);
         queryString += " WHERE " + condition;
@@ -65,7 +61,8 @@ var orm = {
 
     delete: function(table, condition, cb) {
         var queryString = "DELETE FROM " + table;
-        queryString += "WHERE " + condition;
+        queryString += " WHERE " + condition;
+        console.log(queryString);
 
         connection.query(queryString, function(err, result) {
             if (err) throw err;
@@ -73,10 +70,5 @@ var orm = {
         });
     }
 };
-
-// In the `orm.js` file, create the methods that will execute the necessary MySQL commands in the controllers. These are the methods you will need to use in order to retrieve and store data in your database.
-//  `selectAll()`
-//  `insertOne()`
-//  `updateOne()`
 
 module.exports = orm;
