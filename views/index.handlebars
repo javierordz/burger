@@ -1,45 +1,59 @@
-<div class="container">
+<div class="container" id="c_1">
+  <img src="/assets/img/burger.png" id="logo_main">
+  <h1>EAT DA BURGER</h1>
+</div>
 
-  <div class="jumbotron">
-    <h1 class="display-4">Eat-Da-Burger!</h1>
-  </div>
-
+<div class="container" id="c_2">
   <div class="row">
+
     <div class="col-lg">
       <h2>TO EAT</h2>
-        {{#each burgers}}
-          {{#unless this.devoured}}
-            <li>
-              {{this.id}} || {{this.burger_name}} > > >
-              <button class="devour-burger" data-burger-id="{{this.id}}" data-devour="{{this.devoured}}">Devour!</button>
-              <button class="delete-burger" data-burger-id="{{this.id}}">X</button>
-            </li>
-          {{/unless}}
-        {{/each}}
+      {{#each burgers}}
+        {{#unless this.devoured}}
+          <div class="btn-group" role="group" aria-label="Eat and Delete">
+            <label class="btn btn-primary active label"># {{this.id}}</label>
+            <label class="btn btn-primary label">{{this.burger_name}} &nbsp;</label>
+            <label class="devour-burger btn btn-outline-danger" data-burger-id="{{this.id}}" data-devour="{{this.devoured}}" data-toggle="tooltip" data-placement="top" title="Eat burger!">
+              <i class="fas fa-utensils"></i>
+              </label>
+            <label class="delete-burger btn btn-outline-danger" data-burger-id="{{this.id}}" data-toggle="tooltip" data-placement="top" title="Delete">
+              <i class="fas fa-times-circle"></i>
+              </label>
+          </div>
+          <br>
+        {{/unless}}
+      {{/each}}
     </div>
 
-  <div class="col">
-    <h2>EATEN</h2>
+    <div class="col">
+      <h2>EATEN</h2>
       {{#each burgers}}
         {{#if this.devoured}}
-          <li>
-            {{this.id}} || {{this.burger_name}}
-            <button class="devour-burger" data-burger-id="{{this.id}}" data-devour="{{this.devoured}}">Reorder!</button>
-          </li>
+          <div class="btn-group" role="group" aria-label="Eat and Reorder">
+            <label class="btn btn-primary active" ># {{this.id}}</label>
+            <label class="btn btn-primary">{{this.burger_name}} &nbsp;</label>
+            <label class="devour-burger btn btn-outline-danger" data-burger-id="{{this.id}}" data-devour="{{this.devoured}}" data-toggle="tooltip" data-placement="top" title="Reorder burger!">
+              <i class="fas fa-reply"></i>
+              </label>
+          </div>
+          <br>
         {{/if}}
       {{/each}}
     </div>
   </div>
-  <br><hr>
+  <br>
+</div>
 
-  <div class="row">
-    <h2>CREATE A BURGER</h2>
-    <br>
-    
-    <form id="add-burger" class="button-size">
-      <textarea typce="text" id="new-burger"></textarea>
-      <button type="submit">Submit Burger!</button>
-    </form>
-  </div>
+<div class="container" id="c_3">
+  <h2>PROPOSE A BURGER</h2>
+  <form id="add-burger" class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="New burger!" id="new-burger">
+    <span class="input-group-append">
+      <button class="btn btn-danger" type="submit"><i class="fas fa-plus-square"></i></button>
+    </span>
+  </form>
+</div>
 
+<div class="container" id="c_4">
+  © 2019 by Javier Ordonez
 </div>

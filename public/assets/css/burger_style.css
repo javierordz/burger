@@ -1,0 +1,83 @@
+body {
+    background-color: #99D5C9;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35rem;
+}
+
+h1, h2 {
+    font-family: 'Kanit', sans-serif;
+}
+
+h1 {
+    display: inline-block;
+    font-size: 5rem;
+    margin-bottom: 0;
+}
+
+/* HEADER */
+#c_1 {
+    background-color: #6C969D;
+    text-align: center;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+#logo_main {
+    width: 88px;
+    margin-right: 25px;
+    vertical-align: bottom;
+}
+
+/* BURGER LIST */
+#c_2 {
+    background-color: #FBEBBC;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 20px;
+}
+
+.label {
+    cursor: none;
+}
+
+.btn {
+    font-size: 1.35rem;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #7B4D3D;
+    border-color: #2D1C17; /*set the color you want here*/
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .btn-primary:not(:disabled):not(.disabled).active {
+    color: #fff;
+    background-color: #7B4D3D;
+    border-color: #2D1C17; /*set the color you want here*/
+}
+
+/* CREATE BURGER */
+#c_3 {
+    background-color: #B6F84D;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 20px;
+}
+
+form {
+    display: inline;
+}
+
+#c_4 {
+    background-color: #25C38E;
+    text-align: center;
+    padding: 15px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    font-size: 1rem;
+}
+
+/* GREEN #25C48E */
+/* ORANGE #F5C847 */
